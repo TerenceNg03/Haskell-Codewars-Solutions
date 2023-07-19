@@ -21,6 +21,11 @@ description:         Please see the README on GitHub at <https://github.com/Tere
 
 dependencies:
 - base >= 4.7 && < 5
+- mtl
+- random
+- vector
+- lens
+- hspec
 
 ghc-options:
 - -Wall
