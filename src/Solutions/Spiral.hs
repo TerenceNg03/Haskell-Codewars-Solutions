@@ -1,7 +1,7 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module Solutions.Spiral where
+module Solutions.Spiral (spiralize) where
 
 import Control.Applicative ((<|>))
 import Control.Lens (makeLenses, (%=), (.=))
@@ -18,7 +18,7 @@ data Spiral = Spiral
     { _plane :: Set (Int, Int)
     , _direction :: Direction
     , _position :: Point
-    , _size :: Int
+    , size :: Int
     }
 
 makeLenses ''Spiral
@@ -63,8 +63,8 @@ nextStep = do
             R -> (d, D)
         stepOK (p, d') =
             not $
-                isOutOfBound _size p
-                    || checkCollision _plane _size (possibleCollisions p d')
+                isOutOfBound size p
+                    || checkCollision _plane size (possibleCollisions p d')
         stepOK' s = if stepOK s then Just s else Nothing
     return (stepOK' next <|> stepOK' nextTurn)
 
@@ -85,6 +85,6 @@ planeToList s limit =
 
 spiralize :: Int -> [[Int]]
 spiralize limit =
-    let initState = Spiral{_plane = Set.fromList [(0, 0)], _direction = R, _position = (0, 0), _size = limit}
+    let initState = Spiral{_plane = Set.fromList [(0, 0)], _direction = R, _position = (0, 0), size = limit}
         Spiral{_plane = plane'} = execState buildSpiral initState
      in planeToList plane' limit

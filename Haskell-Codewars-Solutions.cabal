@@ -27,6 +27,8 @@ library
   exposed-modules:
       Solutions.Befunge
       Solutions.Befunge.Spec
+      Solutions.RangeExtractor
+      Solutions.RangeExtractor.Spec
       Solutions.Spiral
       Solutions.Spiral.Spec
   other-modules:
