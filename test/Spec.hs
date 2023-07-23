@@ -1,5 +1,8 @@
 import Solutions.Befunge.Spec (befungeSpec)
+import Solutions.Spiral.Spec (spiralSpec)
 import Test.Hspec
 
 main :: IO ()
-main = hspec befungeSpec
+main = do
+    hspec befungeSpec
+    hspec spiralSpec

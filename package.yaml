@@ -26,6 +26,8 @@ dependencies:
 - vector
 - lens
 - hspec
+- QuickCheck
+- containers
 
 ghc-options:
 - -Wall
